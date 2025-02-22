@@ -110,7 +110,7 @@ void readCodes(vector<string>& vec) {
 
 int main() {
     SetConsoleOutputCP(1251);
-    cout<<"������� ����� ����� ������, ��� ������� ��������: 'start'"<<endl;
+    cout<<"Введите числа через пробел, а потом напишите 'start': 'start'"<<endl;
 	vector <string> codes_string;
 	readCodes(codes_string);
 	vector<vector<bool>> codes_binary;
