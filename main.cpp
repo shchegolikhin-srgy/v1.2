@@ -5,7 +5,7 @@
 #include <windows.h>
 
 using namespace std;
-
+///функция, которая принимает в параметре строку в бинорного числа, и возвращает его в десятичной системе счисления
 int toDecimal(string binary) {
 	int decimal = 0;
 	int length = binary.length();
@@ -17,6 +17,7 @@ int toDecimal(string binary) {
 	}
 	return decimal;
 }
+///функция, которая принимает в параметре вектор бинорного числа, и возвращает его в десятичной системе счисления
 int toDecimal(vector<bool> vec) {
 	int decimal = 0;
 	int length = vec.size();
@@ -28,14 +29,16 @@ int toDecimal(vector<bool> vec) {
 	}
 	return decimal;
 }
+/// функция, которая принимает в параметре вектор номеров букв в ASCII 1251 и выводит их символами
 void getWord(vector<int> words) {
     SetConsoleOutputCP(1251);
 	for (int i : words) {
 		cout << char(i);
 	}
 }
+///функция изменяет 15 битный вектор, исправляя ошибку
 void hammingAlgorithm(vector<bool>& codes) {
-	string index_fall = "";
+	string index_fall = "";/// индекс ошибки в двоичной системе счисления
 	int sum_1 = 0, sum_2 = 0, sum_4 = 0, sum_8 = 0;
 	for (int i = 0; i < 15; ++i) {
 		if ((i + 1) % 2 == 1)
@@ -58,14 +61,15 @@ void hammingAlgorithm(vector<bool>& codes) {
 	}
 	cout << endl;
 }
+///функция принимает вектор всех символов в двоичной системе счисления, преобразовывая их в ннформацию
 void binarytoASCII(vector<vector<bool>>& codes_binary) {
-	const int index_data[11] = {3, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15};
+	const int data[11] = {3, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15};
 	vector<int> codes_decimal;
 	string code = "";
 	for (int i = 0; i < codes_binary.size(); ++i){
 		vector<bool> tmp;
 		for (int j = 0; j < 11; ++j) {
-		 	code.push_back(codes_binary[i][index_data[j]-1]);
+		 	code.push_back(codes_binary[i][data[j]-1]);
 		}
 	}
 	code.erase(code.size()-(code.size()%8));
@@ -85,6 +89,7 @@ void binarytoASCII(vector<vector<bool>>& codes_binary) {
 	cout << endl;
 	getWord(codes_decimal);
 }
+/// функция принимает в параметре строку числа, вроде "101010110" и возвращает вектор бинарного числа
 vector <bool> stringToBool(string code) {
 	vector<bool> result;
 	for (char i : code) {
@@ -99,6 +104,7 @@ vector <bool> stringToBool(string code) {
 	cout << endl;
 	return result;
 }
+///функция считывает числа
 void readCodes(vector<string>& vec) {
 	string code;
 	while (code != "start")
@@ -110,7 +116,7 @@ void readCodes(vector<string>& vec) {
 
 int main() {
     SetConsoleOutputCP(1251);
-    cout<<"Введите числа через пробел, а потом напишите 'start': 'start'"<<endl;
+    cout<<"Введите числа через пробел, а потом напишите 'start':"<<endl;
 	vector <string> codes_string;
 	readCodes(codes_string);
 	vector<vector<bool>> codes_binary;
